@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		
+<title>hexo搭建过程中的错与反思-Quiet</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/fav.png">
+
+
+<meta name="keywords" content="前端,">
+<meta name="description" content="">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+	<meta name="generator" content="Hexo 6.0.0"></head>
+
+	<body>
+		
+<link rel="stylesheet" href="/css/page.css">
+
+
+<link rel="stylesheet" href="/css/page_cente.css">
+
+
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+
+<link rel="stylesheet" href="/css/header.css">
+
+	<div class="header">
+		<div class="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.jpg" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Be_Simple</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MaoYuanxing">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'
+    style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'>
+</div>
+<style>
+    .sidebar {
+        width: 0;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        z-index: 999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815)
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $(function () { $('.h-right-close>svg').click(function () { $('.sidebar').animate({ width: "66%" }, 500); $('.shelter').fadeIn("slow") }); $('.shelter').click(function (e) { $('.sidebar').animate({ width: "0" }, 500); $('.shelter').fadeOut("slow") }) })
+</script>
+		<script>
+			$(function () { $(window).scroll(function () { if ($(document).scrollTop() > 100) { $(".header-top").removeClass("header-move2"); $('.header-top').addClass('header-move1') } else { $(".header-top").removeClass("header-move1"); $('.header-top').addClass('header-move2') } }) });
+		</script>
+<div class="header-bg ">
+    <div class="bg-content">
+        <ul class="tag">
+            
+            
+            <li><a href="/tags/前端">前端</a></li>
+            
+            
+        </ul>
+        <h1>hexo搭建过程中的错与反思</h1>
+        <div class="article-info">
+            <div class="article-author">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                    <g>
+                        <path fill="#12183A"
+                            d="M6.187 15.265A6.47 6.47 0 0 0 10 16.5a6.47 6.47 0 0 0 3.813-1.235A4.99 4.99 0 0 0 10 13.5a4.99 4.99 0 0 0-3.813 1.765zM5.082 14.25A6.485 6.485 0 0 1 10 12c1.965 0 3.726.872 4.918 2.25a6.5 6.5 0 1 0-9.836 0zM10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-1.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                        </path>
+                    </g>
+                </svg>
+                
+                <span> <a href="">Be_Simple</a></span>
+                <p>2022-02-12 14:26:24</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article-content">
+    <div id="article" class="content">
+        <h1 id="本文写作初衷"><a href="#本文写作初衷" class="headerlink" title="本文写作初衷"></a>本文写作初衷</h1><p>写在前面这此篇文章废话比较多，我就是写下来发发牢骚，干货较少！下面开始正题：</p>
+<p>这是我第一次使用博客，hexo本身的布置十分简单（真不错（^_^）!）</p>
+<p>他的步骤如下：</p>
+<ul>
+<li>安装Node.js</li>
+<li>安装git</li>
+<li>安装npm</li>
+<li>用npm获取hexo，之后初始化一个空文件夹做为”blog基地“</li>
+<li>新建一个GitHub仓库做为blog远程部署基底</li>
+</ul>
+<p>这里给一个B站上的教学视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yb411a7ty?from=search&seid=14946890330200284717&spm_id_from=333.337.0.0">hexo_install</a> </p>
+<p>这些操作都比较简单，但是作为一名新手，第一次建立自己的blog还是有点小兴奋的所以就十分想要一个好看一点的皮肤….谁曾想这竟成了这次博客搭建的梦魇之始….（蛤蛤，有点扯远了）下面我就记录一下本次换皮肤过程中遇到的问题。</p>
+<h1 id="软件环境"><a href="#软件环境" class="headerlink" title="软件环境"></a>软件环境</h1><p>OS： Win10 x64</p>
+<p>node: 14.6.0</p>
+<p>hexo: 6.0.0</p>
+<h1 id="YML文件问题"><a href="#YML文件问题" class="headerlink" title="YML文件问题"></a>YML文件问题</h1><p>问题主要出现在再换皮肤的过程中，需要进行个性化的设置，这时必不可少的步骤就是修改配置文件**_config.yml** 这个文件会有两份一个是自己建的”blog基地”下的，这个文件的修改一般不会出什么问题，这个是在搭建hexo时视频手把手教的，换皮肤时只需要找到该文件下的 <strong>theme：主题名</strong>   将主题名部分修改为自己要的主题即可。而另一个**_config.yml** 是你下载的主题中的在<em>theme&#x2F;你要的主题</em>这个文件夹下，修改该文件以达到模板个性化的处理，所以必不可少的会对其进行大量修改，但是这就是问题的根源，这个文件有自己的语法叫做<strong>YAML</strong>这是前端的东西但是我只用过后端的语言（c&#x2F;c++，python，R之类的）对语言的不熟悉让我走了很多弯路！！！</p>
+<p>下面是一些相关知识：</p>
+<blockquote>
+<p>YAML 是 “YAML Ain’t a Markup Language”（YAML 不是一种标记语言）的递归缩写。在开发的这种语言时，YAML 的意思其实是：”Yet Another Markup Language”（仍是一种标记语言）。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:48223449%7D">标记语言</a>，是一种将文本（Text）以及文本相关的其他信息结合起来，展现出关于文档结构和数据处理细节的电脑文字编码。与文本相关的其他信息（包括例如文本的结构和表示信息等）与原来的文本结合在一起，但是使用标记（markup）进行标识。</p>
+<blockquote>
+<p>如：HTML、XML</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:48223449%7D">脚本语言</a>,是为了缩短传统的编写-编译-链接-运行（edit-compile-link-run）过程而创建的计算机编程语言。它的命名起源于一个脚本“screenplay”，每次运行都会使对话框逐字重复。早期的脚本语言经常被称为批量处理语言或工作控制语言。<br>一个脚本通常是解释运行而非编译。脚本语言通常都有简单、易学、易用的特性，目的就是希望能让程序员快速完成程序的编写工作。</p>
+<blockquote>
+<p>如：JavaScript、VBScript、PHP</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E7%BC%96%E8%AF%91%E5%9E%8B%E8%AF%AD%E8%A8%80&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:48223449%7D">编译型语言</a>：程序在执行之前需要一个专门的编译过程，把程序编译成 为机器语言的文件，运行时不需要重新翻译，直接使用编译的结果就行了。程序执行效率高，依赖编译器，跨平台性差些</p>
+<blockquote>
+<p>如 C、C++</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>知道这时我才知道还有这些分类，之前的学习都是后端方面的，只知道语言的进化分为：</p>
+<ul>
+<li>机器语言</li>
+<li>汇编语言</li>
+<li>中级语言（像C语言）</li>
+<li>高级语言（Java，python）</li>
+</ul>
+<p>没想到还有这些道道（留下了没有技术的泪水(┳Д┳)… 不过还是有学到新知识的喜悦的，还不够！！！…发动技能苦肉๑乛◡乛๑又扯远了，收！）</p>
+<p>三者之间的区别如下：</p>
+<ol>
+<li><p>标记语言不用于向计算机发出指令，常用于格式化和链接。 </p>
+<p>（奥这就是了皮肤的布局是由这样的语言决定的呀！）</p>
+</li>
+<li><p>脚本语言介于标记语言和编程语言之间，脚本语言脚本语言不需要编译，可以直接用，由解释器来负责解释。（python永远的神(o&gt;ε(o&gt;ｕ(≧∩≦)！有1说1对像我这样学数学的人来说，像这样更接近自然语言的编程语言更有利于用于解决学习上的遇到的问题；但确实效率不是很好，不过作为“胶水”他很不错）</p>
+</li>
+<li><p>编译型语言写的程序执行之前，需要一个专门的编译过程，把程序编译成为机器语言的文件，比如<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=exe%E6%96%87%E4%BB%B6&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:48223449%7D">exe文件</a>，以后要运行的话就不用重新翻译了，直接使用编译的结果就行了（exe文件），因为翻译只做了一次，运行时不需要翻译，所以编译型语言的程序执行效率高。</p>
+</li>
+</ol>
+<p>好了说了这么多，就来让我看看这次让我如此不爽的罪魁祸首吧￣へ￣： YAML</p>
+<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><ul>
+<li><p>大小写敏感</p>
+</li>
+<li><p>使用缩进表示层级关系</p>
+</li>
+<li><p>缩进不允许使用tab，只允许空格（长官就是他，这个罪魁祸首，让我百思不得其解，为什么要有这样的设定呀</p>
+<p>(* ￣︿￣)丧尽天良让我像狗一样找了半天哪里用的是tab真是讨厌，不过这倒是我应该改的地方，统一习惯不能一会儿空格一会儿tab的这就去把tab改成两格缩进少用双击空格！哎~等一等是不是可以查找tab替换为空格呀！阿西巴我真是把自己蠢哭了）</p>
+</li>
+<li><p>缩进的空格数不重要，只要相同层级的元素左对齐即可</p>
+</li>
+<li><p>‘#’表示注释</p>
+</li>
+</ul>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>YAML 支持以下几种数据类型：</p>
+<ul>
+<li>对象：键值对的集合，又称为映射（mapping）&#x2F; 哈希（hashes） &#x2F; 字典（dictionary）</li>
+<li>数组：一组按次序排列的值，又称为序列（sequence） &#x2F; 列表（list）</li>
+<li>纯量（scalars）：单个的、不可再分的值</li>
+</ul>
+<p>这里就不在赘述了相关语法可以参见这篇文章[YMAL基础教程](<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/yaml-intro.html">YAML 入门教程 | 菜鸟教程 (runoob.com)</a>)</p>
+<h1 id="博文发表错误"><a href="#博文发表错误" class="headerlink" title="博文发表错误"></a>博文发表错误</h1><h3 id="类型1"><a href="#类型1" class="headerlink" title="类型1"></a>类型1</h3><h3 id="错误描述"><a href="#错误描述" class="headerlink" title="错误描述"></a>错误描述</h3><p><code>YAMLException: end of the stream or a document separator is expected at line x, column y:</code></p>
+<p>我犯得一个傻瓜错误：</p>
+<p><img src="http://cdn.jsdelivr.net/gh/MaoYuanxing/imgbed/image-20220212171242802.png" alt="image-20220212171242802"></p>
+<p>错误说明</p>
+<p>缺少分隔符，一般都是因为缺少空格，（空格又是你空格，哼~还是C++好free-code赛高！不对我要严格要求自己养成良好的编程习惯！要守规矩）</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>出现这种情况，一般都是缺少空格，在<code>:</code>冒号之后要有空格！检查x行y列附近的冒号，其之后是否跟了空格。</p>
+<h3 id="类型2"><a href="#类型2" class="headerlink" title="类型2"></a>类型2</h3><h3 id="错误描述-1"><a href="#错误描述-1" class="headerlink" title="错误描述"></a>错误描述</h3><p><code>ValidationError: ‘null’ is not a string!</code></p>
+<p>错误说明</p>
+<p>一般都是因为文章无内容，可能是因为在这篇博客文章中，有某些属性没有填写，比如author属性，tag属性，categories属性等，导致该属性是空的，即<code>null</code>，所以报错。</p>
+<h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><p>既然是属性缺失，那就把为空的那个属性给补上吧，仔细找找 :-)(或者删除该属性)</p>
+<h3 id="类型3"><a href="#类型3" class="headerlink" title="类型3"></a>类型3</h3><h3 id="错误描述-2"><a href="#错误描述-2" class="headerlink" title="错误描述"></a>错误描述</h3><p>generate的时候是没问题的，但是网页预览的时候，发现引用块有问题，原本引用块下方的内容跑到引用块里边去了！</p>
+<h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h3><p>引用块都是由一对三个**`** 所包起来的，如果在最后一个点**&#96;**之后有空格，界面会错乱，所以，把这个多余的空格去掉吧。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>这次一共尝试了三种主题</p>
+<ol>
+<li>hexo-matery(尝试了他人魔改的<a target="_blank" rel="noopener" href="https://github.com/LuckyZmj/LuckyBlog">luckyblog</a> )</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a></li>
+<li>[Quiet](<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">GitHub - 79E&#x2F;hexo-theme-quiet: 🔥A simple, easy to read flat hexo theme. 扁平化简约Hexo主题</a>)</li>
+</ol>
+<p>第一个主题确实很好看但是要修改的东西太多一上来就是蒙头一棒太过复杂，放弃；</p>
+<p>第二个主题简约但是还是有复杂，这也是我尝试搭建时间最长的一个主题但是不知道为什么我用Google显示出来的效果不正确，而edge就正确显示了，还有就是设置的评论功能无法实现报错信息涉及到CSS看不懂遂放弃</p>
+<p>带三个也是最简单的一个又加上前面的遇错经验搭建完毕</p>
+<p>总结：一句话对于想学技术的人<strong>使用一个东西却不明白他的原理，不高明</strong>，对错误不能浅尝辄止Google完之后就完了这样不好，有可能的话还是生娃一下比较好，不过这次我并没有这样做。一来以前在解决完问题以后没有像这样让自己静下反思（不过我倒是经常和自己谈谈心）这一点我做的很不好没有记录自己遇到的问题！二来这次的问题是一个前端的问题我这方面完全就是空白，还一上来就搞了一个较复杂的问题有点难为自己了。所以遇到新问题要先选简单的了解大概原理在此基础上再去搞下一个难度的东西，所谓麻雀虽小五脏俱全，小问题搞明白了，我们对这类问题的大体框架也就有了一个明确的估计！</p>
+<p>希望我瑾以此次问题为戒！</p>
+<p>参考文献</p>
+<p><a target="_blank" rel="noopener" href="http://www.54yongf.com/hexo/10.html">http://www.54yongf.com/hexo/10.html</a></p>
+
+    </div>
+</div>
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 109;
+        width: 600px !important;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            width: 88%
+        }
+    }
+</style>
+<script>
+    $(function () { $('#article').click(function (e) { if (e.target.tagName == "IMG") { if ($('#nonediv').length == 0) { let MImg = `<div id='noneimg'><img src='${e.target.currentSrc}'></div>`; let MDiv = "<div id='nonediv' style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'></div>"; $('#article').append(MDiv); $('#article').append(MImg); $("#nonediv").fadeIn("slow"); $("#noneimg img").fadeIn("slow") } } else { if ($('#nonediv').length !== 0) { $("#noneimg ").fadeOut("slow"); $("#nonediv").fadeOut("slow"); setTimeout(function () { $('#nonediv').remove(); $('#noneimg').remove() }, 500) } } }); $('.article-content').addClass('content-move') });
+</script>
+<div class="Last-Next">
+    
+
+    
+    <a href="/2022/02/12/%E6%95%B0%E7%BB%84%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E6%B3%95/">
+        <div class="next">
+            <span>下一篇</span>
+            <p>数组问题的一种解法</p>
+        </div>
+    </a>
+    
+</div>
+		
+<link rel="stylesheet" href="/css/food.css">
+
+<div class="footer">
+	<div class="Copyright">
+		©2022 By Be_Simple. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/qiaobug/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/MaoYuanxing">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: block;
+            border-radius: 50%;
+            width: 66px;
+            height: 66px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            transition: border .5s;
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 30px;
+            height: 30px;
+            margin-top: 17.5px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $('#js-go_top').gotoTop({ offset: 500, speed: 300, animationShow: { 'transform': 'translate(0,0)', 'transition': 'transform .5s ease-in-out' }, animationHide: { 'transform': 'translate(100px,0)', 'transition': 'transform .5s ease-in-out' } });
+</script>
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/QiaoBug/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+
+</html>
