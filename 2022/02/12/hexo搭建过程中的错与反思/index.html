@@ -269,7 +269,7 @@
 </div>
 <div class="article-content">
     <div id="article" class="content">
-        <h1 id="本文写作初衷"><a href="#本文写作初衷" class="headerlink" title="本文写作初衷"></a>本文写作初衷</h1><p>写在前面这此篇文章废话比较多，我就是写下来发发牢骚，干货较少！下面开始正题：</p>
+        <h1 id="本文写作初衷"><a href="#本文写作初衷" class="headerlink" title="本文写作初衷"></a>本文写作初衷</h1><p>写在前面这篇文章废话比较多，我就是写下来发发牢骚，干货较少！下面开始正题：</p>
 <p>这是我第一次使用博客，hexo本身的布置十分简单（真不错（^_^）!）</p>
 <p>他的步骤如下：</p>
 <ul>
@@ -284,7 +284,7 @@
 <h1 id="软件环境"><a href="#软件环境" class="headerlink" title="软件环境"></a>软件环境</h1><p>OS： Win10 x64</p>
 <p>node: 14.6.0</p>
 <p>hexo: 6.0.0</p>
-<h1 id="YML文件问题"><a href="#YML文件问题" class="headerlink" title="YML文件问题"></a>YML文件问题</h1><p>问题主要出现在再换皮肤的过程中，需要进行个性化的设置，这时必不可少的步骤就是修改配置文件**_config.yml** 这个文件会有两份一个是自己建的”blog基地”下的，这个文件的修改一般不会出什么问题，这个是在搭建hexo时视频手把手教的，换皮肤时只需要找到该文件下的 <strong>theme：主题名</strong>   将主题名部分修改为自己要的主题即可。而另一个**_config.yml** 是你下载的主题中的在<em>theme&#x2F;你要的主题</em>这个文件夹下，修改该文件以达到模板个性化的处理，所以必不可少的会对其进行大量修改，但是这就是问题的根源，这个文件有自己的语法叫做<strong>YAML</strong>这是前端的东西但是我只用过后端的语言（c&#x2F;c++，python，R之类的）对语言的不熟悉让我走了很多弯路！！！</p>
+<h1 id="YML文件问题"><a href="#YML文件问题" class="headerlink" title="YML文件问题"></a>YML文件问题</h1><p>问题主要出现在再换皮肤的过程中，需要进行个性化的设置，这时必不可少的步骤就是修改配置文件**_config.yml** 这个文件会有两份一个是自己建的”blog基地”下的，这个文件的修改一般不会出什么问题，这个是在搭建hexo时视频手把手教的，换皮肤时只需要找到自己建的”blog基地”下的 <strong>theme：主题名</strong>   将主题名部分修改为自己要的主题即可。而另一个**_config.yml** 是你下载的主题中的在<em>theme&#x2F;你要的主题</em>这个文件夹下，修改该文件以达到模板个性化的处理，所以必不可少的会对其进行大量修改，但是这就是问题的根源，这个文件有自己的语法叫做<strong>YAML</strong>这是前端的东西但是我只用过后端的语言（c&#x2F;c++，python，R之类的）对语言的不熟悉让我走了很多弯路！！！</p>
 <p>下面是一些相关知识：</p>
 <blockquote>
 <p>YAML 是 “YAML Ain’t a Markup Language”（YAML 不是一种标记语言）的递归缩写。在开发的这种语言时，YAML 的意思其实是：”Yet Another Markup Language”（仍是一种标记语言）。</p>
@@ -310,7 +310,7 @@
 <li>中级语言（像C语言）</li>
 <li>高级语言（Java，python）</li>
 </ul>
-<p>没想到还有这些道道（留下了没有技术的泪水(┳Д┳)… 不过还是有学到新知识的喜悦的，还不够！！！…发动技能苦肉๑乛◡乛๑又扯远了，收！）</p>
+<p>没想到还有这些道道（留下了没有技术的泪水(┳Д┳)… 不过还是有学到新知识的喜悦的，还不够！！！…发动技能苦肉๑乛◡乛๑，啧4又扯远了，收！）</p>
 <p>三者之间的区别如下：</p>
 <ol>
 <li><p>标记语言不用于向计算机发出指令，常用于格式化和链接。 </p>
@@ -395,6 +395,13 @@
     $(function () { $('#article').click(function (e) { if (e.target.tagName == "IMG") { if ($('#nonediv').length == 0) { let MImg = `<div id='noneimg'><img src='${e.target.currentSrc}'></div>`; let MDiv = "<div id='nonediv' style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'></div>"; $('#article').append(MDiv); $('#article').append(MImg); $("#nonediv").fadeIn("slow"); $("#noneimg img").fadeIn("slow") } } else { if ($('#nonediv').length !== 0) { $("#noneimg ").fadeOut("slow"); $("#nonediv").fadeOut("slow"); setTimeout(function () { $('#nonediv').remove(); $('#noneimg').remove() }, 500) } } }); $('.article-content').addClass('content-move') });
 </script>
 <div class="Last-Next">
+    
+    <a href="/2022/02/13/Linked-list/">
+        <div class="last">
+            <span>上一篇</span>
+            <p>Linked list</p>
+        </div>
+    </a>
     
 
     
